@@ -1024,7 +1024,7 @@ ris_model <- function(y, X, niv, prior_fixed = "HS", prior_rand="HS",
       # browser()
       for(k in 1:(n_niv-1)){
         sd_t[k] <- sqrt(extraDistr::rinvgamma(1, 1e-3 + m/2, as.numeric(1e-3 + 0.5*crossprod(y_tmp[niv == k])/se2)))
-        if(is.null(se2_t[k]) | is.na(se2_t[k]) | sd_t[k] < sqrt(1e-3)) sd_t[k] <- sqrt(1e-3)
+        if(is.null(sd_t[k]) | is.na(sd_t[k]) | sd_t[k] < sqrt(1e-3)) sd_t[k] <- sqrt(1e-3)
       }
       Gamma_0 <- diag(sd_t^2)
       Gamma_0_inv <- Diagonal(x=1/sd_t^2)
